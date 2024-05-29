@@ -10,7 +10,7 @@
             </span>
             <mat-label>Filtro por Nome</mat-label>
             <input matInput formControlName="filtroNome" placeholder="Filtrar por Nome">
-            <button  matSuffix mat-icon-button aria-label="Cancelar" (click)="cancelEdit()">
+            <button  matSuffix mat-icon-button aria-label="Cancelar" >
                 <mat-icon>cancel</mat-icon>
             </button>
         </mat-form-field>
@@ -127,7 +127,7 @@
     <form *ngIf="mostrarForm && updatingUser" [formGroup]="formUser" class="form">
         <mat-form-field appearance="outline">
             <mat-label>ID</mat-label>
-            <input matInput formControlName="id" placeholder="ID">
+            <input matInput formControlName="id" placeholder="ID" type="number">
         </mat-form-field>
 
         <mat-form-field appearance="outline">
@@ -147,18 +147,21 @@
 
         <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
-            <input matInput formControlName="email" placeholder="Email">
-        </mat-form-field>
+            <input matInput formControlName="email" placeholder="Email" >
+            <mat-error *ngIf="formUser.get('email')?.hasError('email')">Email inválido</mat-error>
+          </mat-form-field>
 
         <mat-form-field appearance="outline">
             <mat-label>Telefone</mat-label>
             <input matInput formControlName="telefone" placeholder="Telefone" maxlength="15" (input)="phoneMask()">
-        </mat-form-field>
+          </mat-form-field>
 
         <mat-form-field appearance="outline">
             <mat-label>CPF</mat-label>
-            <input matInput formControlName="cpf" placeholder="CPF">
-        </mat-form-field>
+            <input matInput formControlName="cpf" placeholder="CPF" maxlength="14" (input)="CpfMask()">
+            <mat-error *ngIf="formUser.get('cpf')?.hasError('pattern')">CPF inválido</mat-error>
+
+          </mat-form-field>
 
         <mat-form-field appearance="outline">
             <mat-label>Data de Nascimento</mat-label>

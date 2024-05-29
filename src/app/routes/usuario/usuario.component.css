@@ -41,3 +41,20 @@
 .paginator-container mat-paginator {
   width: 100%;
 }
+.form .button-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+}
+
+.form .button-group button {
+  width: 10%;
+  margin: 5px;
+  transition: transform 0.3s ease;
+  margin-right: 15px;
+}
+
+.form .button-group button:hover {
+  transform: scale(1.1);
+}
