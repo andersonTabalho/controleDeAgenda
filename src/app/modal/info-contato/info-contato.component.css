@@ -1,0 +1,21 @@
+.content-dialog {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.foto {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.foto img {
+    width: 100px;
+    height: 100px;
+}
+
+.info {
+    width: 69%;
+}

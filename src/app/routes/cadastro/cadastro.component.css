@@ -1,0 +1,81 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh; /* Usando min-height para garantir que o contêiner ocupe pelo menos 100% da altura da tela */
+}
+
+.form-container {
+  width: 90%;
+  max-width: 400px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 2px solid black;
+  border-radius: 8px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.button-left {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.button-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media screen and (max-width: 600px) {
+  .form-container {
+    width: 95%; /* Reduzindo a largura para 95% da largura da tela em telas menores */
+    max-width: none;
+  }
+}
+
+.mat-stepper-horizontal {
+  margin-top: 8px;
+}
+
+.mat-mdc-form-field {
+  margin-top: 16px;
+}
+
+.editForm {
+  width: calc(100% - 60px); /* 60px = 30px (margin-left) + 30px (margin-right) */
+  background-color: rgb(57, 57, 201);
+  color: aliceblue;
+  text-align: center;
+  padding: 10px 0;
+  margin-bottom: 20px;
+  font-family: 'Arial', sans-serif;
+  font-size: 2em;
+  border-radius: 15px;
+  font-size: xx-large;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 10px; /* Aumenta a margem direita para 30px */
+}
+
+
+h3 {
+  font-size: xx-large;
+  /* Aplica a fonte xx-large aos títulos */
+}
+

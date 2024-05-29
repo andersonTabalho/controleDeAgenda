@@ -1,0 +1,41 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+/* CSS para o componente de spinner */
+.spinner-overlay {
+    position: fixed; /* Mantém o spinner fixo na tela */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente para destacar o spinner */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Valor alto para garantir que o spinner esteja na frente de outros elementos */
+}
+  
+/* CSS para o ícone de spinner */
+.mat-spinner {
+    width: 50px;
+    height: 50px;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    flex-direction: column;
+}
+
+.form {
+    width: 100%;
+}
+
+.filterContact {
+    width: 100% !important;
+}

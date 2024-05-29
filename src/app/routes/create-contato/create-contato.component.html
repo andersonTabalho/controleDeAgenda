@@ -1,0 +1,54 @@
+<form id="cadastroForm" class="form" [formGroup]="myGroup" (ngSubmit)="onSubmit()">
+  <ng-template>Atualizar Dados</ng-template>
+  <input type="hidden" formControlName="id">
+
+  <mat-form-field appearance="fill">
+      <mat-label>Pesquisar pessoa</mat-label>
+      <input matInput formControlName="nome" [matAutocomplete]="auto" style="width: 100%;">
+      <button *ngIf="pessoaSelecionada" matSuffix mat-icon-button aria-label="Cancelar" (click)="cancelEdit()">
+          <mat-icon>cancel</mat-icon>
+      </button>
+      <mat-autocomplete #auto="matAutocomplete">
+          <ng-container *ngFor="let pessoa of filteredOptions | async">
+              <mat-option [value]="pessoa.nome" (onSelectionChange)="selecionaPessoa(pessoa)">
+                  {{ pessoa.nome }}
+              </mat-option>
+          </ng-container>
+      </mat-autocomplete>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Privado</mat-label>
+    <input matInput type="text" id="cpf" name="cpf" formControlName="privado" maxlength="14" (input)="CpfMask()" readonly>
+    <mat-error *ngIf="myGroup.get('cpf')?.hasError('pattern')">CPF inválido</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Tag</mat-label>
+    <input matInput type="text" id="tag" name="tag" formControlName="tag">
+  </mat-form-field>
+  
+  <mat-form-field appearance="fill">
+    <mat-label>email</mat-label>
+    <input matInput type="email" id="email" name="email" formControlName="email">
+    <mat-error *ngIf="myGroup.get('email')?.hasError('email')">Email inválido</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Tipo de contato</mat-label>
+    <mat-select formControlName="tipoContato">
+      <mat-option value="TELEFONE">Telefone</mat-option>
+      <mat-option value="EMAIL">E-mail</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>telefone</mat-label>
+    <input matInput type="text" id="telefone" name="telefone" formControlName="telefone" maxlength="15"
+      (input)="phoneMask()">
+    <mat-error *ngIf="myGroup.get('telefone')?.hasError('pattern')">Telefone inválido</mat-error>
+  </mat-form-field>
+
+  <button mat-button color="primary" type="submit">Salvar contato</button>
+  <button mat-button color="primary" routerLink="/home">Voltar</button>
+</form>

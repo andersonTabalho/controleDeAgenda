@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>Informações do contato.</h1>
+
+<div mat-dialog-content>
+  <div class="content-dialog">
+
+    <div class="foto">
+
+      <img *ngIf="foto" [src]="foto" alt="Foto do Contato">
+
+    </div>
+    <div class="info">
+      <p>Tag: {{data.tag}}</p>
+      <p>Tipo de contato: {{data.tipoContato}}</p>
+      <p>Contato: {{data.email || data.email}}</p>
+    </div>
+
+  </div>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button matDialogClose>Fechar</button>
+</div>

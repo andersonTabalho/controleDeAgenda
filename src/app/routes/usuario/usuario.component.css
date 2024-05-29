@@ -1,0 +1,43 @@
+.editForm {
+  width: 100%;
+  background-color: rgb(57, 57, 201);
+  color: aliceblue;
+  text-align: center;
+  padding: 10px 0;
+  margin-bottom: 20px;
+  font-family: 'Arial', sans-serif;
+  font-size: 2em;
+  border-radius: 15px;
+  font-size: xx-large;
+}
+
+.editForm h3,
+.edit h3 {
+  font-size: xx-large;
+  /* Aplica a fonte xx-large aos títulos */
+}
+
+.content mat-divider {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.form mat-form-field {
+  width: 90%;
+  margin-bottom: 10px;
+}
+
+.paginator-container {
+  width: 100%;
+}
+
+.paginator-container mat-paginator {
+  width: 100%;
+}

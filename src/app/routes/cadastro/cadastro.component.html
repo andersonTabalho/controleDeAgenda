@@ -1,0 +1,103 @@
+<div >
+  <div class="editForm">
+    <h3>Cadastro</h3>
+  </div>
+  <mat-stepper #stepper>
+    <mat-step [stepControl]="myGroup">
+      <form id="cadastroForm" class="form" [formGroup]="myGroup" (ngSubmit)="onSubmit()">
+        <ng-template matStepLabel>Atualizar Dados</ng-template>
+        <input type="hidden" formControlName="id">
+
+        <mat-form-field appearance="fill">
+          <mat-label>CPF</mat-label>
+          <input matInput type="text" id="cpf" name="cpf" formControlName="cpf" maxlength="14" (input)="CpfMask()">
+          <mat-error *ngIf="myGroup.get('cpf')?.hasError('pattern')">CPF inválido</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Data de Nascimento</mat-label>
+          <mat-datepicker-toggle matPrefix [for]="picker"></mat-datepicker-toggle>
+          <input matInput [matDatepicker]="picker" placeholder="Informe a Data de Nascimento"
+            formControlName="dataNascimento" readonly>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" id="email" name="email" formControlName="email">
+          <mat-error *ngIf="myGroup.get('email')?.hasError('email')">Email inválido</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Nome</mat-label>
+          <input matInput type="text" id="nome" name="nome" formControlName="nome">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Telefone</mat-label>
+          <input matInput type="text" id="telefone" name="telefone" formControlName="telefone" maxlength="15"
+            (input)="phoneMask()">
+          <mat-error *ngIf="myGroup.get('telefone')?.hasError('pattern')">Telefone inválido</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Nome de Usuário</mat-label>
+          <input matInput type="text" id="username" name="username" formControlName="username">
+        </mat-form-field>
+
+        <div class="button-container">
+          <div class="button-left">
+            <button mat-button matStepperNext type="button">Próximo</button> <!-- Alterado para type="button" -->
+          </div>
+          <div class="button-right">
+            <button mat-raised-button color="primary" type="submit">Atualizar Dados</button>
+          </div>
+        </div>
+        
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="mySenha">
+      <form id="senhaForm" class="form" [formGroup]="mySenha" (ngSubmit)="senhaNova()">
+        <ng-template matStepLabel>Atualizar sua Senha</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>Nome de Usuário</mat-label>
+          <input matInput type="text" id="username" name="username" formControlName="username">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Senha Atual</mat-label>
+          <input matInput [type]="hidePassword ? 'password' : 'text'" id="password" name="password"
+            formControlName="password">
+          <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword"
+            [attr.aria-label]="hidePassword ? 'Hide password' : 'Show password'">
+            <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Nova Senha</mat-label>
+          <input matInput [type]="hideNewPassword ? 'password' : 'text'" id="newPassword" name="newPassword"
+            formControlName="newPassword">
+          <button type="button" mat-icon-button matSuffix (click)="hideNewPassword = !hideNewPassword"
+            [attr.aria-label]="hideNewPassword ? 'Hide password' : 'Show password'">
+            <mat-icon>{{hideNewPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="mySenha.get('newPassword')?.hasError('pattern')">A senha deve conter pelo menos 8
+            caracteres, incluindo letras e números</mat-error>
+          <mat-error *ngIf="mySenha.get('newPassword')?.hasError('minlength')">A senha deve ter pelo menos 8
+            caracteres</mat-error>
+        </mat-form-field>
+        <div class="button-container">
+          <div class="button-left">
+            <button mat-button matStepperPrevious>Voltar</button>
+          </div>
+          <div class="button-right">
+            <button mat-raised-button color="primary" type="submit">Atualizar Senha</button>
+          </div>
+        </div>
+      </form>
+    </mat-step>
+  </mat-stepper>
+</div>

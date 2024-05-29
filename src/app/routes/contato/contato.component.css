@@ -1,0 +1,139 @@
+.content mat-divider {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.foto,
+.action {
+  width: 10%;
+}
+
+.contato,
+.telefone,
+.email {
+  width: 26.6%;
+}
+
+.actions button {
+  margin-left: 10px;
+}
+
+.no-contacts-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  text-align: center;
+  font-size: 1.2em;
+  color: #888;
+}
+
+/* Estilos específicos para .form */
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.form mat-form-field {
+  width: 90%;
+  margin-bottom: 10px;
+}
+
+.form .button-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+}
+
+.form .button-group button {
+  width: 10%;
+  margin: 5px;
+  transition: transform 0.3s ease;
+  margin-right: 15px;
+}
+
+.form .button-group button:hover {
+  transform: scale(1.1);
+}
+
+/* Estilos específicos para .edit-form */
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.edit-form mat-form-field {
+  width: 90%;
+  margin-bottom: 10px;
+}
+
+.edit-form .button-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+}
+
+.edit-form .button-group button {
+  width: 10%;
+  margin: 5px;
+  transition: transform 0.3s ease;
+  margin-right: 15px;
+}
+
+.edit-form .button-group button:hover {
+  transform: scale(1.1);
+}
+
+/* Estilos para .edit */
+.edit {
+  width: 90%;
+  background-color: rgb(57, 57, 201);
+  color: aliceblue;
+  text-align: center;
+  padding: 10px 0;
+  margin-bottom: 20px;
+  font-family: 'Arial', sans-serif;
+  font-size: 2em;
+  border-radius: 15px;
+
+}
+
+.editForm {
+  width: 100%;
+  background-color: rgb(57, 57, 201);
+  color: aliceblue;
+  text-align: center;
+  padding: 10px 0;
+  margin-bottom: 20px;
+  font-family: 'Arial', sans-serif;
+  font-size: 2em;
+  border-radius: 15px;
+  font-size: xx-large;
+ 
+}
+
+.editForm h3,
+.edit h3 {
+  font-size: xx-large;
+  /* Aplica a fonte xx-large aos títulos */
+}
+
+/* Estilos globais para botões */
+button {
+  transition: transform 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+.selected-file-name {
+  display: block;
+  margin-top: 5px;
+}

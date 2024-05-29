@@ -1,0 +1,184 @@
+<div class="content">
+    <form [formGroup]="myForm" class="form">
+        <div class="editForm">
+            <h3>Usuário</h3>
+        </div>
+        <mat-form-field appearance="outline">
+            <span matPrefix style="margin-left: 10px;">
+                <mat-icon>search</mat-icon>
+                &nbsp;
+            </span>
+            <mat-label>Filtro por Nome</mat-label>
+            <input matInput formControlName="filtroNome" placeholder="Filtrar por Nome">
+            <button  matSuffix mat-icon-button aria-label="Cancelar" (click)="cancelEdit()">
+                <mat-icon>cancel</mat-icon>
+            </button>
+        </mat-form-field>
+    </form>
+
+    <button mat-button color="primary" (click)="toggleForm()">
+        <mat-icon>person_add</mat-icon>
+        <small>Criar novo usuário</small>
+    </button>
+    
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <!-- Columns definitions -->
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> ID </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+            <ng-container matColumnDef="nome">
+                <th mat-header-cell *matHeaderCellDef> Nome </th>
+                <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef> E-mail </th>
+                <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="telefone">
+                <th mat-header-cell *matHeaderCellDef> Telefone </th>
+                <td mat-cell *matCellDef="let element"> {{element.telefone}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="cpf">
+                <th mat-header-cell *matHeaderCellDef> CPF </th>
+                <td mat-cell *matCellDef="let element"> {{element.cpf}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <div class="paginator-container">
+            <mat-paginator [pageSizeOptions]="[5, 9, 10, 20]" showFirstLastButtons></mat-paginator>
+        </div>
+    
+
+    <br>
+
+    <div *ngIf="mostrarForm" class="selection-buttons">
+        <button mat-button color="primary" (click)="setFormForCreate()">
+            <small>Criar novo usuário</small>
+        </button>
+        <button mat-button color="accent" (click)="setFormForUpdate()">
+            <small>Atualizar usuário</small>
+        </button>
+    </div>
+
+    <form *ngIf="mostrarForm && creatingUser" [formGroup]="formUser" class="form">
+        <mat-form-field appearance="outline">
+            <mat-label>Nome</mat-label>
+            <input matInput formControlName="nome" placeholder="Nome">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Senha</mat-label>
+            <input matInput formControlName="password" placeholder="Senha" type="password">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username" placeholder="Username">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" placeholder="Email" >
+            <mat-error *ngIf="formUser.get('email')?.hasError('email')">Email inválido</mat-error>
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline">
+            <mat-label>Telefone</mat-label>
+            <input matInput formControlName="telefone" placeholder="Telefone" maxlength="15" (input)="phoneMask()">
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline">
+            <mat-label>CPF</mat-label>
+            <input matInput formControlName="cpf" placeholder="CPF" maxlength="14" (input)="CpfMask()">
+            <mat-error *ngIf="formUser.get('cpf')?.hasError('pattern')">CPF inválido</mat-error>
+
+          </mat-form-field>
+          
+
+        <mat-form-field appearance="outline">
+            <mat-label>Data de Nascimento</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dataNascimento" placeholder="Data de Nascimento"
+                readonly>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Tipo</mat-label>
+            <mat-select formControlName="tipos">
+                <mat-option value="ROLE_USER">USER</mat-option>
+                <mat-option value="ROLE_ADMIN">ADMIN</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <div class="button-group">
+            <button mat-raised-button color="warn" (click)="cancelEdit()">Cancelar</button>
+            <button mat-raised-button color="primary" (click)="criarUsuario()">Salvar</button>
+        </div>
+    </form>
+
+    <form *ngIf="mostrarForm && updatingUser" [formGroup]="formUser" class="form">
+        <mat-form-field appearance="outline">
+            <mat-label>ID</mat-label>
+            <input matInput formControlName="id" placeholder="ID">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Nome</mat-label>
+            <input matInput formControlName="nome" placeholder="Nome">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Senha</mat-label>
+            <input matInput formControlName="password" placeholder="Senha" type="password">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username" placeholder="Username">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" placeholder="Email">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Telefone</mat-label>
+            <input matInput formControlName="telefone" placeholder="Telefone" maxlength="15" (input)="phoneMask()">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>CPF</mat-label>
+            <input matInput formControlName="cpf" placeholder="CPF">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Data de Nascimento</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dataNascimento" placeholder="Data de Nascimento"
+                readonly>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Tipo</mat-label>
+            <mat-select formControlName="tipos">
+                <mat-option value="ROLE_USER">USER</mat-option>
+                <mat-option value="ROLE_ADMIN">ADMIN</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <div class="button-group">
+            <button mat-raised-button color="warn" (click)="cancelEdit()">Cancelar</button>
+            <button mat-raised-button color="primary" (click)="criarUsuario()">Salvar</button>
+        </div>
+    </form>
+</div>

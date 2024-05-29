@@ -1,0 +1,95 @@
+.table-container {
+  width: 90%; /* Definindo uma largura maior para a tabela */
+  margin: auto; /* Centralizando a tabela */
+  overflow-x: auto; /* Adicionando scroll horizontal para tornar a tabela responsiva */
+}
+
+.wider-column {
+  width: 150px; /* Aumentando a largura da coluna Nome */
+}
+
+.favorite {
+  background-color: lightgreen;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.save-button-container {
+  text-align: center;
+  margin-top: 20px
+}
+
+.search-container {
+  width: 100%;
+  display: flex;
+  box-sizing: border-box;
+}
+
+.search-container mat-form-field {
+  width:  100%;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.edit-form mat-form-field {
+  width: 90%; /* Ajustado para 90% conforme a solicitação */
+  margin-bottom: 10px;
+}
+
+.edit-form .button-group {
+  display: flex;
+  justify-content: flex-start;
+  width: 90%; /* Mantendo a mesma largura dos campos de formulário */
+}
+
+.edit-form .button-group button {
+  width: 50%;
+  margin-right: 10px;
+}
+
+.paginator-container {
+  width: 100%;
+}
+
+.paginator-container mat-paginator {
+  width: 100%;
+}
+
+.editForm {
+  width: 100%;
+  background-color: rgb(57, 57, 201);
+  color: aliceblue;
+  text-align: center;
+  padding: 10px 0;
+  margin-bottom: 20px;
+  font-family: 'Arial', sans-serif;
+  font-size: 2em;
+  border-radius: 15px;
+  font-size: xx-large;
+}
+
+.editForm h3,
+.edit h3 {
+  font-size: xx-large;
+  /* Aplica a fonte xx-large aos títulos */
+}
+
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}

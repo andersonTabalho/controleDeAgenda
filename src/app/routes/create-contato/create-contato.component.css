@@ -1,0 +1,60 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh; /* Usando min-height para garantir que o contêiner ocupe pelo menos 100% da altura da tela */
+  }
+  
+  .form-container {
+    width: 90%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 2px solid black;
+    border-radius: 8px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-title {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+  
+  .form {
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+  }
+  
+  .button-left {
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  .button-right {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .form-container {
+      width: 95%; /* Reduzindo a largura para 95% da largura da tela em telas menores */
+      max-width: none;
+    }
+  }
+  
+  .mat-stepper-horizontal {
+    margin-top: 8px;
+  }
+  
+  .mat-mdc-form-field {
+    margin-top: 16px;
+  }
+

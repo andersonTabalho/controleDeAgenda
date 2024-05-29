@@ -1,0 +1,103 @@
+<div class="content">
+    <form [formGroup]="myForm" class="form">
+        <div class="editForm">
+            <h3>Pessoas</h3>
+        </div>
+        <mat-form-field class="filterContact" appearance="outline">
+            <span matPrefix style="margin-left: 10px;">
+                <mat-icon>search</mat-icon> 
+                &nbsp;
+            </span>
+            <mat-label>Filtrar Nome</mat-label>
+            <input matInput formControlName="nome" [matAutocomplete]="auto" style="width: 100%;">
+            <button *ngIf="formVisible" matSuffix mat-icon-button aria-label="Cancelar" (click)="cancelEdit()">
+                <mat-icon>cancel</mat-icon>
+            </button>
+            <mat-autocomplete #auto="matAutocomplete">
+                <ng-container *ngFor="let pessoa of filteredOptions | async">
+                    <mat-option [value]="pessoa.nome" (onSelectionChange)="onPessoaSelected(pessoa)">
+                        {{ pessoa.nome }}
+                        <span class="option-buttons">
+                            <button mat-icon-button color="primary" (click)="editPessoa(pessoa)">
+                                <mat-icon>edit</mat-icon>
+                            </button>
+                            <button mat-icon-button color="warn" (click)="removerPessoa(pessoa.id)">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </span>
+                    </mat-option>
+                </ng-container>
+            </mat-autocomplete>
+        </mat-form-field>
+    </form>
+    
+    <button mat-button color="primary" (click)="visible()">
+        <mat-icon>person_add</mat-icon>
+        <small>Adicionar pessoa</small>
+    </button>
+
+    <ng-container *ngIf="formVisible">
+        <div class="container">
+            <form [formGroup]="editForm" (ngSubmit)="onSave()" class="form-container">
+                <mat-stepper #stepper>
+                    <mat-step>
+                        <ng-template matStepLabel>Dados</ng-template>
+                        <input type="hidden" formControlName="id">
+                        <input type="hidden" formControlName="id_endereco">
+                        
+                        <mat-form-field appearance="fill" class="input-form-field">
+                            <mat-label>Nome</mat-label>
+                            <input matInput formControlName="nome">
+                        </mat-form-field>
+                        <mat-form-field appearance="fill" class="input-form-field">
+                            <mat-label>Bairro</mat-label>
+                            <input matInput formControlName="bairro">
+                        </mat-form-field>
+                        <mat-form-field appearance="fill" class="input-form-field">
+                            <mat-label>CEP</mat-label>
+                            <input matInput formControlName="cep">
+                        </mat-form-field>
+                        <mat-form-field appearance="fill" class="input-form-field">
+                            <mat-label>Cidade</mat-label>
+                            <input matInput formControlName="cidade">
+                        </mat-form-field>
+                        <mat-form-field appearance="fill" class="input-form-field">
+                            <mat-label>Estado</mat-label>
+                            <input matInput formControlName="estado">
+                        </mat-form-field>
+                        <mat-form-field appearance="fill" class="input-form-field">
+                            <mat-label>Logradouro</mat-label>
+                            <input matInput formControlName="logradouro">
+                        </mat-form-field>
+                        <mat-form-field appearance="fill" class="input-form-field">
+                            <mat-label>Número</mat-label>
+                            <input matInput formControlName="numero">
+                        </mat-form-field>
+                        <mat-form-field appearance="fill" class="input-form-field">
+                            <mat-label>País</mat-label>
+                            <input matInput formControlName="pais">
+                        </mat-form-field>
+                        <mat-form-field appearance="fill" class="input-form-field">
+                            <mat-label>CPF</mat-label>
+                            <input matInput formControlName="cpf">
+                        </mat-form-field>
+                        <div>
+                            <button mat-button matStepperNext type="button">Next</button>
+                        </div>
+                    </mat-step>
+                    <mat-step>
+                        <ng-template matStepLabel>Foto</ng-template>
+                        <div class="file-upload-container">
+                            <input type="file" id="fileInput" formControlName="file" (change)="onFileChange($event)">
+                        </div>
+                    </mat-step>
+                    
+                </mat-stepper>
+                <div class="button-group">
+                    <button mat-raised-button color="warn" (click)="cancelEdit()">Cancelar</button>
+                    <button mat-raised-button color="primary" type="submit">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </ng-container>
+</div>

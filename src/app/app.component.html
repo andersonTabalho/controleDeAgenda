@@ -1,0 +1,37 @@
+<header class="toolbar" role="banner">
+  <div class="spacer"></div>
+
+  <div class="login">
+        <button mat-button color="basic" *ngIf="!(this.tokenService.isAuthenticated() | async)" routerLink="/login">
+            <small>Entrar</small>
+            <mat-icon>login</mat-icon>
+        </button>
+        <button mat-button color="basic" *ngIf="this.tokenService.isAuthenticated() | async" (click)="logout()">
+            <small>Sair</small>
+            <mat-icon>logout</mat-icon>
+        </button>
+  </div>
+</header>
+<body>
+  <nav class="navbar" *ngIf="this.tokenService.isAuthenticated() | async">
+    <ng-container *ngFor="let route of routes">
+        <button mat-button class="route" [routerLink]="route.route" routerLinkActive="active">
+            <mat-icon>{{route.icon}}</mat-icon>
+            <span>{{route.name}}</span>
+        </button>
+    </ng-container>
+  </nav>
+  <main>
+        <router-outlet></router-outlet>
+  </main>
+</body>
+<footer class="footer">
+  <a href="" target="" rel="">
+      <div class="">
+            
+      </div>
+  </a>
+  <a href="" target="" rel="">
+        <svg class="" xmlns="" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="#1976d2"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+  </a>
+</footer>

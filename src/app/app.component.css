@@ -1,0 +1,249 @@
+:host {
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* ==============================================================================================================
+Inicio CSS para o header. */
+
+.spacer {
+    flex: 1;
+}
+
+.toolbar {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    background-color: #0b1219;
+    color: white;
+    font-weight: 600;
+}
+
+.toolbar img {
+    margin: 0 16px;
+}
+
+.toolbar span {
+    font-size: 22px;
+}
+
+.toolbar .login{ 
+    margin-right: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100px;
+    /* margin: 0 16px; */
+    font-size: 10px;
+    color: white;
+    /* border: 1px solid red; */
+    cursor: pointer; /* Mudar o cursor para uma mãozinha */
+}
+
+.login span{
+    font-size: 22px;
+    color: white;
+ }
+
+.toolbar .login:hover {
+    color: #b0b8f5; /* Altera a cor de fundo para vermelho (#ff0000) ao passar o cursor */
+}
+
+.toolbar #twitter-logo {
+    height: 40px;
+    margin: 0 8px;
+}
+
+.toolbar #youtube-logo {
+    height: 40px;
+    margin: 0 16px;
+}
+
+.toolbar #twitter-logo:hover,
+.toolbar #youtube-logo:hover {
+    opacity: 0.8;
+}
+
+/* ==============================================================================================================
+Inicio CSS para o menu. */
+
+/* ==============================================================================================================
+Inicio CSS para o menu. */
+
+/* ==============================================================================================================
+Inicio CSS para o menu. */
+
+/* ==============================================================================================================
+Inicio CSS para o menu. */
+
+.navbar {
+    width: 250px;
+    position: relative;
+    left: 0;
+    background-color: rgb(57, 57, 201); /* Altera a cor para RGB(57, 57, 201) */
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    transition: width 0.3s ease; /* Adiciona uma transição suave à largura */
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra sutil */
+}
+
+.navbar:hover {
+    width: 280px; /* Expande o menu ao passar o mouse */
+}
+
+.navroute {
+    margin-top: 20px;
+}
+
+.nav-button {
+    width: 100%;
+    margin-top: 10px;
+    height: 40px; /* Aumenta a altura dos botões */
+    color: white;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Adiciona uma transição suave à cor de fundo e à cor do texto */
+    position: relative; /* Adiciona posição relativa para os efeitos de brilho */
+}
+
+.nav-button:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Adiciona um efeito de hover */
+}
+
+.nav-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.2); /* Adiciona um brilho */
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease; /* Adiciona uma transição suave ao brilho */
+}
+
+.nav-button:hover::before {
+    opacity: 1; /* Mostra o brilho ao passar o mouse */
+}
+
+.navicon {
+    transform: scale(1.2);
+}
+
+.route {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    color: white !important;
+    transition: color 0.3s ease; /* Adiciona uma transição suave à cor do texto */
+    border-top: 1px solid transparent; /* Adiciona uma borda transparente na parte superior */
+    border-bottom: 1px solid transparent; /* Adiciona uma borda transparente na parte inferior */
+}
+
+.route:hover {
+    color: #b0b8f5; /* Altera a cor do texto ao passar o mouse */
+    border-top-color: white; /* Mostra a borda na parte superior ao passar o mouse */
+    border-bottom-color: white; /* Mostra a borda na parte inferior ao passar o mouse */
+}
+
+
+/* ==============================================================================================================
+Inicio CSS para o body. */
+
+body {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: row;
+    /* border: 1px solid red;  */
+}
+
+main{
+    width: 100% !important;
+}
+
+/* ==============================================================================================================
+Inicio CSS para o footer. */
+
+.footer {
+    display: flex;
+    align-items: center;
+    line-height: 20px;
+    background-color: #0b1219;
+    color: white;
+}
+
+.footer a {
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.github-star-badge {
+    color: #24292e;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    padding: 3px 10px;
+    border: 1px solid rgba(27,31,35,.2);
+    border-radius: 3px;
+    background-image: linear-gradient(-180deg,#fafbfc,#eff3f6 90%);
+    margin-left: 4px;
+    font-weight: 600;
+}
+
+.github-star-badge:hover {
+    background-image: linear-gradient(-180deg,#f0f3f6,#e6ebf1 90%);
+    border-color: rgba(27,31,35,.35);
+    background-position: -.5em;
+}
+
+.github-star-badge .material-icons {
+    height: 16px;
+    width: 16px;
+    margin-right: 4px;
+}
+
+svg#clouds {
+    position: fixed;
+    bottom: -160px;
+    left: -230px;
+    z-index: -10;
+    width: 1920px;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 767px) {
+    .card-container > *:not(.circle-link) ,
+    .terminal {
+    width: 100%;
+    }
+
+    .card:not(.highlight-card) {
+    height: 16px;
+    margin: 8px 0;
+    }
+
+    .card.highlight-card span {
+    margin-left: 72px;
+    }
+
+    svg#rocket-smoke {
+    right: 120px;
+    transform: rotate(-5deg);
+    }
+}
+
+@media screen and (max-width: 575px) {
+    svg#rocket-smoke {
+    display: none;
+    visibility: hidden;
+    }
+}

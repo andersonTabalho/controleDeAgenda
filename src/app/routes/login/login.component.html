@@ -1,0 +1,23 @@
+<div class="login-page">
+  <div class="form">
+    <div><span style="font-size: 20px;">Login</span></div>
+    <br>
+    <div *ngIf="errStr" style="color: red; font-size: 15px;">
+      {{errStr}}
+    </div>
+    <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <input type="text" formControlName="username" placeholder="Username"/>
+      <input type="password" formControlName="password" placeholder="Password"/>
+      <button mat-raised-button type="submit" color="primary">Login</button>
+      <mat-checkbox formControlName="rememberAccount">
+        <small>Lembrar meu usuário e senha.</small>
+      </mat-checkbox>
+      <p class="message">Ainda não possui conta? <a routerLink="#">Criar conta</a></p>
+    </form>
+  </div>
+</div>
+
+<div class="spinner-overlay" *ngIf="isLoad">
+  <mat-spinner></mat-spinner>
+  <!-- <p>Loading...</p> -->
+</div>
