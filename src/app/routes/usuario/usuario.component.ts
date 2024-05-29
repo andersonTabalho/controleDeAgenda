@@ -126,7 +126,7 @@ export class UsuarioComponent implements OnInit, AfterViewInit {
     this.subscription = this.http.post<usuario[]>(`/api/usuario/pesquisar`, { termo: '' })
       .subscribe({
         next: (res) => {
-          
+          alert("Operação realizada com sucesso!")
           this.dataSource.data = res;
         },
         error: (err) => {
